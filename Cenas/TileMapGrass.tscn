@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Sprite/terrain.png" type="Texture" id=2]
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=1]
 16/name = "terrain.png 16"
 16/texture = ExtResource( 2 )
 16/tex_offset = Vector2( 0, 0 )
@@ -201,6 +201,6 @@
 29/z_index = 0
 
 [node name="TileMap" type="TileMap"]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
