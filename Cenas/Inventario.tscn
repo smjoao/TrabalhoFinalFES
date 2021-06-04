@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Sprite/grid_selector.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/grid_selector.png" type="Texture" id=2]
 
 [node name="Inventario" type="MarginContainer"]
 anchor_left = 0.5
