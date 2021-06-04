@@ -5,14 +5,17 @@ export var speed = 400  # How fast the player will move (pixels/sec).
 var screen_size  # Size of the game window.
 var velocity = Vector2()
 var face_direction = Vector2.DOWN
+
 onready var animSprite = $AnimatedSprite
 
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	
 
 func get_velocity_from_input():
 	var vel = Vector2()
+	
 	if Input.is_action_pressed("ui_right"):
 		face_direction = Vector2.RIGHT
 		vel.x += 1
@@ -37,6 +40,7 @@ func get_direction_string():
 func _process(_delta):
 	velocity = get_velocity_from_input()
 	
+	
 	var dir_str = get_direction_string()
 	animSprite.play("Walk" + dir_str)
 	
@@ -47,3 +51,6 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	move_and_slide( velocity, Vector2.UP)
+	position.x = (floor(position.x) if velocity.x > 0 else ceil(position.x))
+	position.y = (floor(position.y) if velocity.y > 0 else ceil(position.y))
+	
