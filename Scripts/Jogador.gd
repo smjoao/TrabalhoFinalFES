@@ -8,7 +8,6 @@ var face_direction = Vector2.DOWN
 
 onready var animSprite = $AnimatedSprite
 
-
 func _ready():
 	screen_size = get_viewport_rect().size
 	

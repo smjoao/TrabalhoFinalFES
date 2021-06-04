@@ -11,6 +11,9 @@ onready var curr_item_index = 0
 
 var mouse_tile_pos
 
+var time = 0.0
+const TIME_PERIOD = 20.0
+signal timepass
 
 func tile_pos_to_world_pos( tile_pos ):
 	return Vector2(tile_pos.x * tile_map.cell_size.x, tile_pos.y * tile_map.cell_size.y)
@@ -33,6 +36,16 @@ func set_grid_selector( tile_pos ):
 func _process(_delta):
 	var mouse_world_pos = get_global_mouse_position()
 	mouse_tile_pos = tile_map.world_to_map( mouse_world_pos )
+	
+	if (tile_map.get_cellv( mouse_tile_pos ) == 17): #seletor só aparece na fazenda
+		grid_selector.visible = true
+	else:
+		grid_selector.visible = false
+	
+	time += _delta
+	if time > TIME_PERIOD:
+		time -= TIME_PERIOD
+		emit_signal("timepass")
 	
 	set_grid_selector( mouse_tile_pos )
 
@@ -72,3 +85,6 @@ func _input( event ):
 			curr_item_index = num_items - 1
 		else:
 			curr_item_index -= 1
+
+
+
