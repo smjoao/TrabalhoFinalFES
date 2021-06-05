@@ -53,3 +53,4 @@ func _physics_process(_delta):
 	position.x = (floor(position.x) if velocity.x > 0 else ceil(position.x))
 	position.y = (floor(position.y) if velocity.y > 0 else ceil(position.y))
 	
+	

@@ -12,7 +12,7 @@ var items = []
 var mouse_tile_pos
 
 var time = 0.0
-const TIME_PERIOD = 20.0
+const TIME_PERIOD = 5.0
 signal timepass
 
 func _ready():
