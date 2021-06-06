@@ -24,17 +24,18 @@ func regar_planta():
 func cria_fruti():
 	var fruti_path = "res://Cenas/Fruti.tscn"
 	var fruti = load(fruti_path).instance()
-	fruti.global_position = self.position + Vector2(16,8)
-	get_node("/root").add_child(fruti)
+	fruti.global_position = self.position + Vector2(16,8) #centraliza posição do fruti
+	
+	fruti.connect("collected",get_node("/root/Fazenda/Jogador"),"_on_Fruti_collected") #ao ser instanciado, conecta o jogador com o sinal de coleta
+	get_parent().add_child(fruti)
+	
 	
 func drop():
 	if(curr_phase == 3):
-		print("fruto dropado")
 		cria_fruti()
-	else:
-		print("planta removida")
 	queue_free()
-	
+
+#sinais recebidos pela planta
 func _on_Fazenda_timepass():
 	# talvez possa fzr a planta morrer se nao tiver sido regada
 	print("1 dia passou para esta plantinha")

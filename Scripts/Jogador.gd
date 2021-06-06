@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 
 export var speed = 400  # How fast the player will move (pixels/sec).
+var bonus_speed = 1.0
 var screen_size  # Size of the game window.
 var velocity = Vector2()
 var face_direction = Vector2.DOWN
@@ -10,6 +11,7 @@ onready var animSprite = $AnimatedSprite
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	get_parent().connect("timepass",self,"_on_Fazenda_timepass") #quando o dia reseta, o efeito da fruta acaba
 	
 
 func get_velocity_from_input():
@@ -44,7 +46,7 @@ func _process(_delta):
 	animSprite.play("Walk" + dir_str)
 	
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * speed * bonus_speed
 	else:
 		animSprite.play("Idle" + dir_str)
 
@@ -53,4 +55,12 @@ func _physics_process(_delta):
 	position.x = (floor(position.x) if velocity.x > 0 else ceil(position.x))
 	position.y = (floor(position.y) if velocity.y > 0 else ceil(position.y))
 	
+#sinais recebidos pelo jogador
+func _on_Fruti_collected():
+	animSprite.modulate = Color(1,0,0)
+	bonus_speed = 1.5
 	
+
+func _on_Fazenda_timepass():
+	bonus_speed = 1.0
+	animSprite.modulate = Color(1,1,1)
