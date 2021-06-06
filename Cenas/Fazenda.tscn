@@ -42,10 +42,9 @@ tile_data = PoolIntArray( -2, 0, 131072, -1, 0, 131073, -65536, 0, 131073, -6553
 scale = Vector2( 2, 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2( -20, 0 )
+transform = Transform2D( 1, 0, 0, 1, -20, 0 )
 
 [node name="Inventario" parent="CanvasLayer" instance=ExtResource( 6 )]
-margin_left = -110.639
-margin_top = -68.9731
-margin_right = -54.6376
-margin_bottom = -52.9731
-rect_scale = Vector2( 4, 4 )
+margin_left = -69.0
+margin_bottom = 18.0

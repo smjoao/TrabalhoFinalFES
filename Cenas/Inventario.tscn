@@ -1,48 +1,27 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Sprites/grid_selector.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Inventario.gd" type="Script" id=1]
 
-[node name="Inventario" type="MarginContainer"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -28.0
-margin_top = -36.0
-margin_right = 28.0
-margin_bottom = -20.0
+[node name="Inventario" type="VBoxContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -1024.0
+margin_bottom = 600.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 56.0
-margin_bottom = 16.0
-alignment = 1
+[node name="Titulo" type="Label" parent="."]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Inventário:"
+align = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-margin_right = 16.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 16, 16 )
-size_flags_horizontal = 4
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
-margin_left = 20.0
-margin_right = 36.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 16, 16 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
-margin_left = 40.0
-margin_right = 56.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 16, 16 )
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
+[node name="Lista" type="VBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 18.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

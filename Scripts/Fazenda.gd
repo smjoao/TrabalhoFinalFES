@@ -6,6 +6,7 @@ export (Array) var initial_items_path
 onready var tile_map = $TileMapGrass
 onready var grid_selector = $GridSelector
 onready var player = $Jogador
+onready var item_gui = $CanvasLayer/Inventario
 onready var curr_item_index = 0
 
 var items = []
@@ -18,7 +19,7 @@ signal timepass
 func _ready():
 	for node_path in initial_items_path:
 		items.append( get_node( node_path ) )
-	
+	item_gui.update_inventario( self, items )
 	print( "Item atual: (" + str(curr_item_index) + ") " + items[curr_item_index].get_name() )
 
 # transforma uma posição no grid para uma posição global
@@ -81,11 +82,13 @@ func _input( event ):
 			items[curr_item_index].do_action( self )
 	
 	elif( event.is_action_pressed("scroll_up") ):
-		curr_item_index = posmod( curr_item_index + 1, items.size() )
+		curr_item_index = posmod( curr_item_index - 1, items.size() )
+		item_gui.update_inventario( self, items )
 		print( "Item atual: (" + str(curr_item_index) + ") " + items[curr_item_index].get_name() )
 	
 	elif( event.is_action_pressed("scroll_down") ):
-		curr_item_index = posmod( curr_item_index - 1, items.size() )
+		curr_item_index = posmod( curr_item_index + 1, items.size() )
+		item_gui.update_inventario( self, items )
 		print( "Item atual: (" + str(curr_item_index) + ") " + items[curr_item_index].get_name() )
 
 
